@@ -57,7 +57,7 @@ public class java_mail extends JFrame implements Runnable, ActionListener{
     
     //ventana de inicio
     private void configurarVentana() {
-        this.setTitle("SURA mail bot");                   // colocamos titulo a la ventana
+        this.setTitle("Mail bot");                   // colocamos titulo a la ventana
         this.setSize(512, 210);                                 // colocamos tamanio a la ventana (ancho, alto)
         this.setLocationRelativeTo(null);                       // centramos la ventana en la pantalla
         this.setLayout(null);                                   // no usamos ningun layout, solo asi podremos dar posiciones a los componentes
@@ -67,7 +67,7 @@ public class java_mail extends JFrame implements Runnable, ActionListener{
    
     //configura la ventana de inicio del servicio
     private void configurarVentana2() {
-        this.setTitle("SURA mail bot");                   // colocamos titulo a la ventana
+        this.setTitle("Mail bot");                   // colocamos titulo a la ventana
         this.setSize(300, 200);                                 // colocamos tamanio a la ventana (ancho, alto)
         this.setLocationRelativeTo(null);                       // centramos la ventana en la pantalla
         this.setLayout(null);                                   // no usamos ningun layout, solo asi podremos dar posiciones a los componentes
@@ -85,7 +85,7 @@ public class java_mail extends JFrame implements Runnable, ActionListener{
         caja = new JTextField();
         boton = new JButton();
         // configuramos los componentes
-        texto.setText("Comprobacion estado de correos SURA");    // colocamos un texto a la etiqueta
+        texto.setText("Comprobacion de correos");    // colocamos un texto a la etiqueta
         texto.setBounds(150, 20, 500, 25);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
         caja.setBounds(160, 50, 100, 25);   // colocamos posicion y tamanio a la caja (x, y, ancho, alto)
         boton.setText("Activar bot");   // colocamos un texto al boton
@@ -235,7 +235,7 @@ public void recibirCorreo() throws NoSuchProviderException, MessagingException{
             if (inbox.getUnreadMessageCount() >= messageCount) {
                 System.out.println("New mail has arrived");
                 FlagTerm unseenFlagTerm = new FlagTerm(new Flags(Flags.Flag.SEEN), false);
-                FromTerm senderFlagTerm = new FromTerm(new InternetAddress("checkmail02@sura.cl"));
+                FromTerm senderFlagTerm = new FromTerm(new InternetAddress("correo_empresa_1"));//colocar correo empresarial 1 aqui
                 SearchTerm searchTerm = new AndTerm(unseenFlagTerm, senderFlagTerm);
                 Message messages[] = inbox.search(searchTerm);
                 if (messages.length>0) {
@@ -270,7 +270,7 @@ public void recibirCorreoG() throws NoSuchProviderException, MessagingException{
             if (inbox.getUnreadMessageCount() >= messageCount) {
                 System.out.println("New mail has arrived");
                 FlagTerm unseenFlagTerm = new FlagTerm(new Flags(Flags.Flag.SEEN), false);
-                FromTerm senderFlagTerm = new FromTerm(new InternetAddress("checkmail01@sura.cl"));
+                FromTerm senderFlagTerm = new FromTerm(new InternetAddress("correo_empresa_2"));//colocar correo empresa 2 aqui
                 SearchTerm searchTerm = new AndTerm(unseenFlagTerm, senderFlagTerm);
                 Message messages[] = inbox.search(searchTerm);
                 if (messages.length>0) {
@@ -304,7 +304,7 @@ public void recibirCorreo2() throws NoSuchProviderException, MessagingException{
             if (inbox.getUnreadMessageCount() >= messageCount) {
                 System.out.println("New mail has arrived");
                 FlagTerm unseenFlagTerm = new FlagTerm(new Flags(Flags.Flag.SEEN), false);
-                FromTerm senderFlagTerm = new FromTerm(new InternetAddress("checkmail02@sura.cl"));
+                FromTerm senderFlagTerm = new FromTerm(new InternetAddress("correo_empresa_1"));//colocar correo empresa 1 aqui
                 SearchTerm searchTerm = new AndTerm(unseenFlagTerm, senderFlagTerm);
                 Message messages[] = inbox.search(searchTerm);
                 if (messages.length>0) {
@@ -338,7 +338,7 @@ public void recibirCorreoG2() throws NoSuchProviderException, MessagingException
             if (inbox.getUnreadMessageCount() >= messageCount) {
                 System.out.println("New mail has arrived");
                 FlagTerm unseenFlagTerm = new FlagTerm(new Flags(Flags.Flag.SEEN), false);
-                FromTerm senderFlagTerm = new FromTerm(new InternetAddress("checkmail01@sura.cl"));
+                FromTerm senderFlagTerm = new FromTerm(new InternetAddress("correo_empresa_2"));//colocar correo empresa 2 aqui
                 SearchTerm searchTerm = new AndTerm(unseenFlagTerm, senderFlagTerm);
                 Message messages[] = inbox.search(searchTerm);
                 if (messages.length>0) {
@@ -357,9 +357,9 @@ public void recibirCorreoG2() throws NoSuchProviderException, MessagingException
     //metodo que envia el correo de comprobacion a la cuenta outlook 365 desde yahoo
     public void enviarCorreo(){
         // Mention the Recipient's email address
-        String to = "checkmail02@sura.cl";
+        String to = "correo_empresa_1";//colocar correo empresa 1 aqui
         // Mention the Sender's email address
-        String from = "alertasura02@yahoo.com";
+        String from = "mail@yahoo.com";//reemplazar cuenta externa
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email
         String host = "smtp.mail.yahoo.com";
         // Get system properties
@@ -392,9 +392,9 @@ public void recibirCorreoG2() throws NoSuchProviderException, MessagingException
  
         public void enviarCorreo2(){
                 // Mention the Recipient's email address
-        String to = "checkmail02@sura.cl";
+        String to = "correo_empresa_1";
         // Mention the Sender's email address
-        String from = "sistemaprueba@yahoo.com";
+        String from = "mail@yahoo.com";//reemplazar cuenta externa
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email
         String host = "smtp.mail.yahoo.com";
         // Get system properties
@@ -429,9 +429,9 @@ public void recibirCorreoG2() throws NoSuchProviderException, MessagingException
     //metodo que envia el correo de comprobacion a la cuenta outlook 365 desde gmail
     public void enviarCorreoG(){
                // Mention the Recipient's email address
-        String to = "checkmail01@sura.cl";
+        String to = "correo_empresa_2";//colocar cuenta empresa 2 aqui
         // Mention the Sender's email address
-        String from = "alertasura01@gmail.com";
+        String from = "mail@gmail.com";//reemplazar cuenta externa 
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email
         String host = "smtp.gmail.com";
         // Get system properties
@@ -464,9 +464,9 @@ public void recibirCorreoG2() throws NoSuchProviderException, MessagingException
     
         public void enviarCorreoG2(){
                // Mention the Recipient's email address
-        String to = "checkmail01@sura.cl";
+        String to = "correo_empresa_2";//colocar cuenta empresa 2 aqui
         // Mention the Sender's email address
-        String from = "alertasura001@gmail.com";
+        String from = "mail@gmail.com";//reemplazar cuenta externa
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email
         String host = "smtp.gmail.com";
         // Get system properties
@@ -488,7 +488,7 @@ public void recibirCorreoG2() throws NoSuchProviderException, MessagingException
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject("Recibido");//vvgfhfhhhhjhhhh                                                                                                                                                                 
+            message.setSubject("Recibido");                                                                                                                                                                 
             message.setText("Revision de los sistemas de correo");
             System.out.println("sending...");
             Transport.send(message);
@@ -501,8 +501,8 @@ public void recibirCorreoG2() throws NoSuchProviderException, MessagingException
     
     //correo de alerta cuando el sistema noi este funcionando
     public void enviarCorreoNegativo(){
-        String to = "mayron.orellana@externos.afpcapital.cl";
-        String from = "sistemaprueba@yahoo.com";
+        String to = "correo_encargado";//correo encargado
+        String from = "mail@yahoo.com";//cuenta externa
         String host = "smtp.mail.yahoo.com";
         Properties properties = System.getProperties();
         properties.put("mail.smtp.host", host);
